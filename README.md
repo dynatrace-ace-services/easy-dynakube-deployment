@@ -22,6 +22,8 @@ Rollout the easytravel application on bare metal VM (VM on a cloud provider) wit
     while [[ `kubectl get pods -n sock-shop | grep easytravel_www | grep "0/"` ]];do kubectl get pods -n sock-shop;echo "==> waiting for easytravel_www pod ready";sleep 1; done
     kubectl apply -f https://raw.githubusercontent.com/JLLormeau/sock-shop/main/ingress-istio.yaml
 
+
+## Usefull command
 Verify istio:
 
     istioctl analyze
