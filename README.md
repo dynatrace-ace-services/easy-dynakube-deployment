@@ -16,6 +16,7 @@ Rollout the easytravel application on bare metal VM (VM on a cloud provider) wit
     kubectl label namespace default istio-injection=enabled
 
     #easytravel
+    kubectl create namespace easytravel
     kubectl create -f https://raw.githubusercontent.com/dynatrace-ace-services/easytravel_k3s/main/manifest_easytravel.yaml
 
     #waiting for easytravel_www pod report READY before installing istio gateway > 3 minutes
