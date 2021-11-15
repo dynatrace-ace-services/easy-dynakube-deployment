@@ -62,6 +62,10 @@ Verify istio:
 
     istioctl analyze
     
+Delete All pods
+
+    kubectl delete --all pods -n easytravel
+    
 Stop loadgen : 
 
     kubectl -n easytravel scale --replicas=0 deployment/loadgen
