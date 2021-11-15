@@ -20,7 +20,7 @@ Rollout the easytravel application on bare metal VM (VM on a cloud provider) wit
 
     #waiting for easytravel_www pod report READY before installing istio gateway > 3 minutes
     while [[ `kubectl get pods -n sock-shop | grep easytravel_www | grep "0/"` ]];do kubectl get pods -n sock-shop;echo "==> waiting for easytravel_www pod ready";sleep 1; done
-    kubectl apply -f https://raw.githubusercontent.com/JLLormeau/sock-shop/main/ingress-istio.yaml
+    kubectl apply -f https://raw.githubusercontent.com/dynatrace-ace-services/easy_dynakube_deployment/main/istio_easytravel.yaml
 
 
 ## Deploy Dynakube
