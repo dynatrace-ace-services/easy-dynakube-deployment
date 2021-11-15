@@ -46,7 +46,7 @@ You can verify it with this command
 As a workaround, you have to manually configured it here `Settings > Cloud and virtualization > Kubernetes`:   
 
    1) Delete "k3s" on `https://127.0.0.1:6443`
-   2) Create new one with
+   2) Create new one on this ActiveGate `dynakube-kubemon-0` (if the activegate is not yet there, wait 1 or 2 minutes...)
         Connection name : `k3s`
         Kubernetes API URL Target : `https://<server_name>:6443`
         Verify hostname in certificate against Kubernetes API URL : disable
