@@ -23,6 +23,11 @@ Rollout the easytravel application on bare metal VM (VM on a cloud provider) wit
     kubectl apply -f https://raw.githubusercontent.com/JLLormeau/sock-shop/main/ingress-istio.yaml
 
 
+## Install Dynakube
+
+    
+
+
 ## Usefull command
 Verify istio:
 
