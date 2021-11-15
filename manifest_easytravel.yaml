@@ -1,42 +1,39 @@
-apiVersion: apps/v1
-kind: Deployment
+---
+apiVersion: v1
+kind: Namespace
 metadata:
-  labels:
-    app: easytravel
-    tier: loadgen
-  name: loadgen
+  name: easytravel
+---
+#Example - Don't source control actual secrets
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mongo-credentials
   namespace: easytravel
-spec:
-  selector:
-    matchLabels:
-      app: easytravel
-      tier: loadgen
-  replicas: 1
-  template:
-    metadata:
-      labels:
-        app: easytravel
-        tier: loadgen
-      annotations:
-        contact: "demo@dynatrace.com"
-        priority: "low"
-        tier: loadgen
-        app: easytravel
-    spec:
-      containers:
-      - image: dynatrace/easytravel-loadgen:2.0.0.3218
-        name: loadgen
-        envFrom:
-        - configMapRef:
-            name: easytravel-config
-        resources:
-          limits:
-            cpu: 200m
-            memory: 256Mi
-          requests:
-            cpu: 100m
-            memory: 128Mi
---- easytravel-mongodb
+type: Opaque
+data:
+  ET_DATABASE_LOCATION: ZWFzeXRyYXZlbC1tb25nb2RiOjI3MDE3Cg== #easytravel-mongodb:27017
+  ET_MONGO_AUTH_DB: YWRtaW4K #admin
+  ET_DATABASE_USER: ZXRBZG1pbgo= #etAdmin
+  ET_DATABASE_PASSWORD: YWRtaW5hZG1pbgo= #adminadmin
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: easytravel-config
+  namespace: easytravel
+data:
+  ET_BACKEND_URL: http://easytravel-backend:8080
+  ET_FRONTEND_URL: http://easytravel-www:80
+  ET_WWW_URL: http://easytravel-www:80
+  ET_FRONTEND_LOCATION: easytravel-frontend:8080
+  ET_BACKEND_LOCATION: easytravel-backend:8080
+  ET_PROBLEMS: DatabaseCleanup
+  ET_PROBLEMS_DELAY: "0"
+  ET_VISIT_NUMBER: "2"
+  ET_APM_SERVER_DEFAULT: APM
+  CATALINA_OPTS: "-XX:+UseContainerSupport -XX:MaxRAMPercentage=80"
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -88,90 +85,7 @@ spec:
   selector:
     app: easytravel
     tier: mongodb
-
---- mongo-credentials
-#Example - Don't source control actual secrets
-apiVersion: v1
-kind: Secret
-metadata:
-  name: mongo-credentials
-  namespace: easytravel
-type: Opaque
-data:
-  ET_DATABASE_LOCATION: ZWFzeXRyYXZlbC1tb25nb2RiOjI3MDE3Cg== #easytravel-mongodb:27017
-  ET_MONGO_AUTH_DB: YWRtaW4K #admin
-  ET_DATABASE_USER: ZXRBZG1pbgo= #etAdmin
-  ET_DATABASE_PASSWORD: YWRtaW5hZG1pbgo= #adminadmin
---- easytravel nginx
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: easytravel-www
-  namespace: easytravel
-spec:
-  selector:
-    matchLabels:
-      app: easytravel
-      tier: web
-  replicas: 1
-  template:
-    metadata:
-      labels:
-        app: easytravel
-        tier: web
-      annotations:
-        contact: "demo@dynatrace.com"
-        priority: "high"
-        tier: web
-        app: easytravel
-    spec:
-      containers:
-      - image: dynatrace/easytravel-nginx:2.0.0.3218
-        name: easytravel-www
-        envFrom:
-        - configMapRef:
-            name: easytravel-config
-        ports:
-        - containerPort: 80
-        resources:
-          limits:
-            cpu: 200m
-            memory: 256Mi
-          requests:
-            cpu: 100m
-            memory: 128Mi
-        # readinessProbe:
-        #   httpGet:
-        #     path: /
-        #     port: 80
-        #     scheme: HTTP
-        #   initialDelaySeconds: 5
-        # livenessProbe:
-        #   httpGet:
-        #     path: /
-        #     port: 80
-        #     scheme: HTTP
-        #   initialDelaySeconds: 120
-        #   periodSeconds: 120
 ---
-apiVersion: v1
-kind: Service
-metadata:
-  labels:
-    app: easytravel
-    tier: web
-  name: easytravel-www
-  namespace: easytravel
-spec:
-  ports:
-  - port: 80
-    targetPort: 80
-  selector:
-    app: easytravel
-    tier: web
-  type: LoadBalancer
-
---- easytravel-backend
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -241,25 +155,7 @@ spec:
     app: easytravel
     tier: backend
   type: ClusterIP
-
---- easytravel-config
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: easytravel-config
-  namespace: easytravel
-data:
-  ET_BACKEND_URL: http://easytravel-backend:8080
-  ET_FRONTEND_URL: http://easytravel-www:80
-  ET_WWW_URL: http://easytravel-www:80
-  ET_FRONTEND_LOCATION: easytravel-frontend:8080
-  ET_BACKEND_LOCATION: easytravel-backend:8080
-  ET_PROBLEMS: DatabaseCleanup
-  ET_PROBLEMS_DELAY: "0"
-  ET_VISIT_NUMBER: "2"
-  ET_APM_SERVER_DEFAULT: APM
-  CATALINA_OPTS: "-XX:+UseContainerSupport -XX:MaxRAMPercentage=80"
---- easytravel-frontend
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -328,3 +224,110 @@ spec:
     app: easytravel
     tier: frontend
   type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: easytravel-www
+  namespace: easytravel
+spec:
+  selector:
+    matchLabels:
+      app: easytravel
+      tier: web
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: easytravel
+        tier: web
+      annotations:
+        contact: "demo@dynatrace.com"
+        priority: "high"
+        tier: web
+        app: easytravel
+    spec:
+      containers:
+      - image: dynatrace/easytravel-nginx:2.0.0.3218
+        name: easytravel-www
+        envFrom:
+        - configMapRef:
+            name: easytravel-config
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            cpu: 200m
+            memory: 256Mi
+          requests:
+            cpu: 100m
+            memory: 128Mi
+        # readinessProbe:
+        #   httpGet:
+        #     path: /
+        #     port: 80
+        #     scheme: HTTP
+        #   initialDelaySeconds: 5
+        # livenessProbe:
+        #   httpGet:
+        #     path: /
+        #     port: 80
+        #     scheme: HTTP
+        #   initialDelaySeconds: 120
+        #   periodSeconds: 120
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: easytravel
+    tier: web
+  name: easytravel-www
+  namespace: easytravel
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+  selector:
+    app: easytravel
+    tier: web
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: easytravel
+    tier: loadgen
+  name: loadgen
+  namespace: easytravel
+spec:
+  selector:
+    matchLabels:
+      app: easytravel
+      tier: loadgen
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: easytravel
+        tier: loadgen
+      annotations:
+        contact: "demo@dynatrace.com"
+        priority: "low"
+        tier: loadgen
+        app: easytravel
+    spec:
+      containers:
+      - image: dynatrace/easytravel-loadgen:2.0.0.3218
+        name: loadgen
+        envFrom:
+        - configMapRef:
+            name: easytravel-config
+        resources:
+          limits:
+            cpu: 200m
+            memory: 256Mi
+          requests:
+            cpu: 100m
+            memory: 128Mi
