@@ -1,4 +1,4 @@
-# Monitor easytravel on kubernetes with DynatraKube
+# Monitor easytravel on kubernetes with DynaKube
 
 ## Install easytravel on k3s rancher
 Rollout the easytravel application on bare metal VM (VM on a cloud provider) with k3s and istio gateway.  
