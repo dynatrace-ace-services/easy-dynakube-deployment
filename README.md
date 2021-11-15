@@ -30,7 +30,7 @@ From Dynatrace > Deploy Dynatrace > Install OneAgent > Kubernetes
 Generate DynaKube script installation 
 
     export TENANT=<YYYY>.live.dynatrace.com
-    export API_TOKEN=<PAAS_TOKEN>
+    export API_TOKEN=<API_TOKEN>
     export PAAS_TOKEN=<PAAS_TOKEN>
     
     wget https://github.com/dynatrace/dynatrace-operator/releases/latest/download/install.sh -O install.sh && sh ./install.sh --api-url "https://$TENANT/api" --api-token $API_TOKEN --paas-token $PAAS_TOKEN --skip-ssl-verification --cluster-name "k3s"
@@ -38,10 +38,10 @@ Generate DynaKube script installation
 
 ## Kubernetes Monitoring for K3S
 
-
-
+Why I don't have workload with k3S ?  
     
-
+    kubectk cluster-info 
+   
 
 ## Usefull command
 Verify istio:
