@@ -1,6 +1,6 @@
-# easytravel and kubernetes
+# easytravel for kubernetes
 
-## install easytravel for kubernetes
+## install easytravel on k3s rancher
 Rollout the easytravel application on bare metal VM (VM on a cloud provider) with k3s and istio gateway.
 (tested with Azure VM Standard D2s v3 - 2 vCP, 8 GB)
 
