@@ -17,11 +17,11 @@ Rollout the easytravel application on bare metal VM (VM on a cloud provider) wit
 
     #easytravel
     kubectl create namespace easytravel
-    kubectl create -f https://raw.githubusercontent.com/dynatrace-ace-services/easytravel_k3s/main/manifest_easytravel.yaml
+    kubectl create -f https://raw.githubusercontent.com/dynatrace-ace-services/easy-dynakube-deployment/main/manifest_easytravel.yaml
 
     #waiting for easytravel_www pod report READY before installing istio gateway > 3 minutes
     while [[ `kubectl get pods -n easytravel | grep easytravel-www | grep "0/"` ]];do kubectl get pods -n easytravel;echo "==> waiting for easytravel_www pod ready";sleep 1; done
-    kubectl apply -f https://raw.githubusercontent.com/dynatrace-ace-services/easy_dynakube_deployment/main/istio_easytravel.yaml
+    kubectl apply -f https://raw.githubusercontent.com/dynatrace-ace-services/easy-dynakube-deployment/main/istio_easytravel.yaml
 
 
 ## Deploy Dynakube
