@@ -38,17 +38,18 @@ Generate DynaKube script installation
 
 ## Kubernetes Monitoring for K3S
 
-Why I don't have workload with k3s ?  it's because with "K3s" Kubernetes master is running at https://127.0.0.1:6443 ... and can't be changed on k3s  
-You can verify it with this command   
+Why I don't have workload with k3s ?  
+it's because with "K3s" Kubernetes master is running at https://127.0.0.1:6443 ... and can't be changed on k3s   
+You can verify it with this command    
     
     kubectl cluster-info 
 
 As a workaround, you have to manually configured it here `Settings > Cloud and virtualization > Kubernetes`:   
 
-   1) Delete "k3s" on https://127.0.0.1:6443
+   1) Delete "k3s" on `https://127.0.0.1:6443`
    2) Create new one with
-        Connection name : "k3s"
-        Kubernetes API URL Target : "https://<server_name>:6443
+        Connection name : `k3s`
+        Kubernetes API URL Target : `https://<server_name>:6443`
         Verify hostname in certificate against Kubernetes API URL : disable
         Kubernetes Bearer Token : => use this command 
 
