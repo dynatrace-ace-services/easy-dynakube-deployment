@@ -291,7 +291,6 @@ spec:
   selector:
     app: easytravel
     tier: web
-  type: LoadBalancer
 ---
 apiVersion: apps/v1
 kind: Deployment
