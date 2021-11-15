@@ -23,7 +23,17 @@ Rollout the easytravel application on bare metal VM (VM on a cloud provider) wit
     kubectl apply -f https://raw.githubusercontent.com/JLLormeau/sock-shop/main/ingress-istio.yaml
 
 
-## Install Dynakube
+## Deploy Dynakube
+
+From Dynatrace > Deploy Dynatrace > Install OneAgent > Kubernetes
+Generate DynaKube script installation 
+
+    wget https://github.com/dynatrace/dynatrace-operator/releases/latest/download/install.sh -O install.sh && sh ./install.sh --api-url "https://YYY.live.dynatrace.com/api" --api-token "ABCDEFGHIJKLMM" --paas-token "ABCDEFGHIJKLMM" --skip-ssl-verification --cluster-name "k3s"
+
+
+## Kubernetes Monitoring for K3S
+
+
 
     
 
