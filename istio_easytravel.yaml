@@ -25,6 +25,11 @@ spec:
   gateways:
   - easytravel-gateway
   http:
-  - route:
+  - match:
+    - port: 80
+    route:
     - destination:
         host: easytravel-www
+        port:
+          number: 80
+          
