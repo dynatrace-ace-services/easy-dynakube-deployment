@@ -50,7 +50,7 @@ As a workaround, you have to manually configured it here `Settings > Cloud and v
         Connection name : `k3s`   
         Kubernetes API URL Target : `https://<server_name>:6443`   
         Verify hostname in certificate against Kubernetes API URL : `disable`   
-        Kubernetes Bearer Token : => use this command 
+        Kubernetes Bearer Token : => run this command on the k3s cluster
 
     kubectl get secret $(kubectl get sa dynatrace-kubernetes-monitoring -o jsonpath='{.secrets[0].name}' -n dynatrace) -o jsonpath='{.data.token}' -n dynatrace | base64 --decode;echo
     
