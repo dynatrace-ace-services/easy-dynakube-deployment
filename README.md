@@ -1,6 +1,6 @@
 # easytravel for kubernetes
 
-## install easytravel on k3s rancher
+## Install easytravel on k3s rancher
 Rollout the easytravel application on bare metal VM (VM on a cloud provider) with k3s and istio gateway.  
 (tested with Azure VM Standard D2s v3 - 2 vCP, 8 GB)  
 
@@ -16,7 +16,7 @@ Rollout the easytravel application on bare metal VM (VM on a cloud provider) wit
     kubectl label namespace default istio-injection=enabled
 
     #easytravel
-    kubectl create -f https://raw.githubusercontent.com/JLLormeau/sock-shop/main/sock-shop.yaml
+    kubectl create -f https://raw.githubusercontent.com/dynatrace-ace-services/easytravel_k3s/main/manifest_easytravel.yaml
 
     #waiting for easytravel_www pod report READY before installing istio gateway > 3 minutes
     while [[ `kubectl get pods -n sock-shop | grep easytravel_www | grep "0/"` ]];do kubectl get pods -n sock-shop;echo "==> waiting for easytravel_www pod ready";sleep 1; done
