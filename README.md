@@ -79,6 +79,10 @@ Get pod installed by DynaKube
 
     kubectl get pods -n dynatrace
 
+Get pod installed by easytravel
+
+    kubectl get pods -n easytravel
+
 Stop loadgen : 
 
     kubectl -n easytravel scale --replicas=0 deployment/loadgen
