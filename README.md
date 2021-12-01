@@ -66,6 +66,10 @@ Delete All pods
 
     kubectl delete --all pods -n easytravel
     
+Get pod installed by DynaKube
+
+    kubectl get pods -n dynatrace
+
 Stop loadgen : 
 
     kubectl -n easytravel scale --replicas=0 deployment/loadgen
