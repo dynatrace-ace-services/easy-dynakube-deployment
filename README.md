@@ -44,18 +44,24 @@ You can verify it with this command
     kubectl cluster-info 
 
 As a workaround, you have to manually configured it here `Settings > Cloud and virtualization > Kubernetes`:  
-This very light k3s is not completly supported and doesn't have cpu, memory usage and log monitoring. 
 
    1) Delete "k3s" on `https://127.0.0.1:6443`
-   2) Create new one an ActiveGate  (if the activegate is not yet there, wait 1 or 2 minutes...)   
+   2) Create new one an ActiveGate  (if the activegate is not yet here, wait 1 or 2 minutes...)   
         Connection name : `k3s`   
-        Kubernetes API URL Target : `https://<server_name>:6443`   
-        Verify hostname in certificate against Kubernetes API URL : `disable`   
-        Kubernetes Bearer Token : => run this command on the k3s cluster
-
+        Kubernetes API URL Target : `https://10.0.0.4:6443/`   
+        Kubernetes Bearer Token : => run the command below 
+        Verify hostname in certificate against Kubernetes API URL : `disable` 
+        Monitor event : `enable`
+        Opt in to the Kubernetes events feature for analysis and alerting : `enable`
+        Include all events relevant for Davis : `enable`
+        
+       command for the bearer token :
+       
     kubectl get secret $(kubectl get sa dynatrace-kubernetes-monitoring -o jsonpath='{.secrets[0].name}' -n dynatrace) -o jsonpath='{.data.token}' -n dynatrace | base64 --decode;echo
     
-   3) upload the 2 specific dashboards from [here](/dashboard-monitoring-k3s)
+   3) enable Monitor event 
+   4) enable the log on the cluster : Settings > Log Monitoring > Log sources and storage 
+   5) upload the 2 specific dashboards from [here](/dashboard-monitoring-k3s)  
     
 Now you have your workload with k3s :)
             
