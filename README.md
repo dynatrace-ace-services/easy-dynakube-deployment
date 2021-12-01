@@ -49,13 +49,13 @@ As a workaround, you have to manually configured it here `Settings > Cloud and v
    2) Create new one an ActiveGate  (if the activegate is not yet here, wait 1 or 2 minutes...)   
         Connection name : `k3s`   
         Kubernetes API URL Target : `https://10.0.0.4:6443/`   
-        Kubernetes Bearer Token : => run the command below 
-        Verify hostname in certificate against Kubernetes API URL : `disable` 
-        Monitor event : `enable`
-        Opt in to the Kubernetes events feature for analysis and alerting : `enable`
-        Include all events relevant for Davis : `enable`
+        Kubernetes Bearer Token : => run the command below  
+        Verify hostname in certificate against Kubernetes API URL : `disable`  
+        Monitor event : `enable`  
+        Opt in to the Kubernetes events feature for analysis and alerting : `enable`  
+        Include all events relevant for Davis : `enable`  
         
-       command for the bearer token :
+       command for the bearer token :  
        
     kubectl get secret $(kubectl get sa dynatrace-kubernetes-monitoring -o jsonpath='{.secrets[0].name}' -n dynatrace) -o jsonpath='{.data.token}' -n dynatrace | base64 --decode;echo
     
