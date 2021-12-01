@@ -59,7 +59,6 @@ As a workaround, you have to manually configured it here `Settings > Cloud and v
        
     kubectl get secret $(kubectl get sa dynatrace-kubernetes-monitoring -o jsonpath='{.secrets[0].name}' -n dynatrace) -o jsonpath='{.data.token}' -n dynatrace | base64 --decode;echo
     
-   3) enable Monitor event 
    4) enable the log on the cluster : Settings > Log Monitoring > Log sources and storage 
    5) upload the 2 specific dashboards from [here](/dashboard-monitoring-k3s)  
     
