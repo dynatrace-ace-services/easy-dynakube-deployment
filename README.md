@@ -55,6 +55,8 @@ This very light k3s is not completly supported and doesn't have cpu, memory usag
 
     kubectl get secret $(kubectl get sa dynatrace-kubernetes-monitoring -o jsonpath='{.secrets[0].name}' -n dynatrace) -o jsonpath='{.data.token}' -n dynatrace | base64 --decode;echo
     
+   3) upload the 2 specific dashboards from [here](/dashboard-monitoring-k3s)
+    
 Now you have your workload with k3s :)
             
 
