@@ -43,7 +43,8 @@ You can verify it with this command
     
     kubectl cluster-info 
 
-As a workaround, you have to manually configured it here `Settings > Cloud and virtualization > Kubernetes`:  
+This very light k3s cluster is not completely supported and you need to do some adjustements.    
+As a workaround, you have to manually configured it here `Settings > Cloud and virtualization > Kubernetes`. 
 
    1) Delete "k3s" on `https://127.0.0.1:6443`
    2) Create new one an ActiveGate  (if the activegate is not yet here, wait 1 or 2 minutes...)   
@@ -59,9 +60,12 @@ As a workaround, you have to manually configured it here `Settings > Cloud and v
        
     kubectl get secret $(kubectl get sa dynatrace-kubernetes-monitoring -o jsonpath='{.secrets[0].name}' -n dynatrace) -o jsonpath='{.data.token}' -n dynatrace | base64 --decode;echo
     
-   4) enable the log on the cluster : Settings > Log Monitoring > Log sources and storage 
-   5) upload the 2 specific dashboards from [here](/dashboard-monitoring-k3s)  
-    
+   3) upload the 2 specific dashboards from [here](/dashboard-monitoring-k3s)  
+
+To monitor kubernetes log : 
+
+   5) enable the log on the cluster : Settings > Log Monitoring > Log sources and storage 
+
 Now you have your workload with k3s :)
             
 
