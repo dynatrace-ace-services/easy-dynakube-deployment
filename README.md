@@ -43,7 +43,8 @@ You can verify it with this command
     
     kubectl cluster-info 
 
-As a workaround, you have to manually configured it here `Settings > Cloud and virtualization > Kubernetes`:   
+As a workaround, you have to manually configured it here `Settings > Cloud and virtualization > Kubernetes`:  
+This very light k3s is not completly supported and doesn't have cpu, memory usage and log monitoring. 
 
    1) Delete "k3s" on `https://127.0.0.1:6443`
    2) Create new one an ActiveGate  (if the activegate is not yet there, wait 1 or 2 minutes...)   
