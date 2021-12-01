@@ -1,4 +1,4 @@
-As the k3s is not completly supported, upload these 2 dashboards to monitor 3ks in this lab.  
+As the k3s is not completly supported, upload these 2 dashboards to monitor this 3ks cluster in the lab.  
 If you have other hosts monitored, create a management zone and apply it on these dashbaord.  
 
 Kubernetes Cluster Overview - lab k3s  
