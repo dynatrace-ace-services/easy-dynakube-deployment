@@ -55,7 +55,7 @@ As a workaround, you have to manually configured it here `Settings > Cloud and v
         Opt in to the Kubernetes events feature for analysis and alerting : `enable`  
         Include all events relevant for Davis : `enable`  
         
-       `command for the bearer token` :  
+       *command for the bearer token* :  
        
     kubectl get secret $(kubectl get sa dynatrace-kubernetes-monitoring -o jsonpath='{.secrets[0].name}' -n dynatrace) -o jsonpath='{.data.token}' -n dynatrace | base64 --decode;echo
     
