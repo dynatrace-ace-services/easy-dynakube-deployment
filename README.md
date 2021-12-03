@@ -70,7 +70,7 @@ Now you have your workload with k3s :)
 
 ## Monitor Istio
    
-   (Under construction - only heathz/ready with Opentracing)
+   (Under construction - only heathz/ready with Opentracing)  
    enable Envoy on the monitorid technology : Settings > Monitoring > Monitored Technologies > Envoy
 
 ## Restart Services 
