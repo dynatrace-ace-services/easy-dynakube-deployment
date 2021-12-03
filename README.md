@@ -49,7 +49,7 @@ As a workaround, you have to manually configured it here `Settings > Cloud and v
    1) Delete "k3s" on `https://127.0.0.1:6443`
    2) Create new one an ActiveGate  (if the activegate is not yet here, wait 1 or 2 minutes...)   
         Connection name : `k3s`   
-        Kubernetes API URL Target : `https://10.0.0.4:6443/`   
+        Kubernetes API URL Target : `https://<your-domaine-name>:6443/`   
         Kubernetes Bearer Token : => run the command below  
         Verify hostname in certificate against Kubernetes API URL : `disable`  
         Monitor event : `enable`  
