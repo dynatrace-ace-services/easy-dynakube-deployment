@@ -72,7 +72,10 @@ Now you have your workload with k3s :)
 
    enable Envoy on the monitorid technology : Settings > Monitoring > Monitored Technologies > Envoy
 
+## Restart Services 
 
+    kubectl delete --all pods -n easytravel
+    kubectl delete --all pods -n istio-system
 
 ## Usefull command
 Verify istio:
