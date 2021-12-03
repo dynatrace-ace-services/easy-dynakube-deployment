@@ -78,6 +78,18 @@ Now you have your workload with k3s :)
     kubectl delete --all pods -n easytravel
     kubectl delete --all pods -n istio-system
 
+## Install prometheus for K3S
+   
+   (Under construction - only heathz/ready with Opentracing)  
+   
+    cd ~
+    git clone https://github.com/prometheus-operator/prometheus-operator.git
+    cd prometheus-operator/
+    sed -i 's/namespace: default/namespace: monitoring/g' bundle.yaml
+    kubectl create ns monitoring
+    kubectl apply -n monitoring -f bundle.yaml
+    
+
 ## Usefull command
 Verify istio:
 
@@ -94,6 +106,14 @@ Get pod installed by DynaKube
 Get pod installed by easytravel
 
     kubectl get pods -n easytravel
+
+Get pod installed by istio
+
+    kubectl get pods -n istio-system
+
+Get pod installed by prometheus
+
+    kubectl get pods -n prometheus
 
 Stop loadgen : 
 
