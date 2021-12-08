@@ -96,16 +96,17 @@ No need to install the prometheus solution to collect these metrics, just use Dy
 
 The process to enable metric scraping for Dynatrace is described [here](https://www.dynatrace.com/support/help/shortlink/monitor-prometheus-metrics#enable-metrics-scraping-required)  
 According to this doc we have modified the manifest for KSM **Deployment** with these information   
-![image](https://user-images.githubusercontent.com/40337213/145271037-41097192-6143-47f7-a8d7-43fcef53488b.png)
-
 
     kubecetl apply -f https://raw.githubusercontent.com/dynatrace-ace-services/easy-dynakube-deployment/main/manifest-kube-state-metrics/kube-state-metrics-with-dynatrace-integration.yaml  
+
+![image](https://user-images.githubusercontent.com/40337213/145271037-41097192-6143-47f7-a8d7-43fcef53488b.png)  
+
 
    Return to Dynatrace  `Settings > Cloud and virtualization > Kubernetes`. 
         Monitor annotated Prometheus exporter : `enable`  
         
    On the metric explorer seacrh 'kube_'
-   ![image](https://user-images.githubusercontent.com/40337213/145270856-e741523b-fc47-430d-b257-526648052241.png)
+   ![image](https://user-images.githubusercontent.com/40337213/145270856-e741523b-fc47-430d-b257-526648052241.png)  
 
 
 ## Usefull command
