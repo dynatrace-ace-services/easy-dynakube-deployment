@@ -103,11 +103,11 @@ Look at the KSM manifest section **Deployment** with the dynatrace metric scrapi
 ![image](https://user-images.githubusercontent.com/40337213/145271037-41097192-6143-47f7-a8d7-43fcef53488b.png)  
 
 
-   Return to Dynatrace  `Settings > Cloud and virtualization > Kubernetes`. 
-        Monitor annotated Prometheus exporter : `enable`  
+   Return to Dynatrace  `Settings > Cloud and virtualization > Kubernetes`.   
+        Monitor annotated Prometheus exporter : `enable`   
         
-   On the metric explorer seacrh 'kube_'
-   ![image](https://user-images.githubusercontent.com/40337213/145270856-e741523b-fc47-430d-b257-526648052241.png)  
+   On the metric explorer seacrh 'kube_'   
+   ![image](https://user-images.githubusercontent.com/40337213/145270856-e741523b-fc47-430d-b257-526648052241.png)    
 
 
 ## Usefull command
