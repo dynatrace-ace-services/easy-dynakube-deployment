@@ -112,9 +112,14 @@ Verify istio:
 
     istioctl analyze
     
-Delete All pods
+Show all namesace
+
+    kubectl get ns
+    
+Delete All pods (to restart the service)
 
     kubectl delete --all pods -n easytravel
+    kubectl delete --all pods -n system-istio
     
 Get pod installed by DynaKube
 
@@ -128,10 +133,10 @@ Get pod installed by istio
 
     kubectl get pods -n istio-system
 
-Get pod installed by prometheus
+Get all pods system
 
-    kubectl get pods -n prometheus
-
+    kubectl get all -n kube-system
+    
 Stop loadgen : 
 
     kubectl -n easytravel scale --replicas=0 deployment/loadgen
