@@ -95,11 +95,11 @@ No need to install the prometheus solution to collect these metrics, just use Dy
   2) Enable metrics scraping for Dynatrace  
 
 The process to enable *metric scraping for Dynatrace* is described [here](https://www.dynatrace.com/support/help/shortlink/monitor-prometheus-metrics#enable-metrics-scraping-required)   
-Apply the updated ksm manifiest with the dynatarce metric scraping enable  
+Apply the updated ksm manifiest with the dynatarce metric scraping enabled 
 
     kubectl apply -f https://raw.githubusercontent.com/dynatrace-ace-services/easy-dynakube-deployment/main/manifest-kube-state-metrics/kube-state-metrics-with-dynatrace-integration.yaml  
 
-Look at the KSM manifest section **Deployment**
+Look at the KSM manifest section **Deployment** with the dynatarce metric scraping enabled
 ![image](https://user-images.githubusercontent.com/40337213/145271037-41097192-6143-47f7-a8d7-43fcef53488b.png)  
 
 
