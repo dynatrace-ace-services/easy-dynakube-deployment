@@ -19,6 +19,7 @@ Rollout the easytravel application on bare metal VM (VM on a cloud provider) wit
     kubectl create -f https://raw.githubusercontent.com/dynatrace-ace-services/easy-dynakube-deployment/main/manifest-easytravel/easytravel.yaml
 
     #waiting for easytravel_www pod report READY before installing istio gateway > 3 minutes
+    #putty ONLY (shell in the box with port 443 will be shutdown at the end of this step  
     while [[ `kubectl get pods -n easytravel | grep easytravel-www | grep "0/"` ]];do kubectl get pods -n easytravel;echo "==> waiting for easytravel_www pod ready";sleep 1; done
     kubectl apply -f https://raw.githubusercontent.com/dynatrace-ace-services/easy-dynakube-deployment/main/manifest-easytravel/istio-easytravel.yaml
 
