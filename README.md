@@ -23,6 +23,7 @@ Rollout the easytravel application on bare metal VM (VM on a cloud provider) wit
     while [[ `kubectl get pods -n easytravel | grep easytravel-www | grep "0/"` ]];do kubectl get pods -n easytravel;echo "==> waiting for easytravel_www pod ready";sleep 1; done
     #putty ONLY (shell-in-the-box with port 443 will be shutdown at the end of this step)  
     kubectl apply -f https://raw.githubusercontent.com/dynatrace-ace-services/easy-dynakube-deployment/main/manifest-easytravel/istio-easytravel.yaml
+    ls
 
 
 ## Deploy Dynakube
