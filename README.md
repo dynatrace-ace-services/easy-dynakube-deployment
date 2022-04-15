@@ -29,12 +29,20 @@ Rollout the easytravel application on bare metal VM (VM on a cloud provider) wit
 
 From Dynatrace > Deploy Dynatrace > Start Installation > Kubernetes
 Generate DynaKube script installation 
-
-    export TENANT=<YYYY>.live.dynatrace.com
-    export API_TOKEN=<API_TOKEN>
-    export PAAS_TOKEN=<PAAS_TOKEN>
     
-    wget https://github.com/dynatrace/dynatrace-operator/releases/latest/download/install.sh -O install.sh && sh ./install.sh --api-url "https://$TENANT/api" --api-token $API_TOKEN --paas-token $PAAS_TOKEN --skip-ssl-verification --cluster-name "k3s"
+    1) Configuration
+    Name (required)
+    Token (required)
+    Skip SSL certificat check 
+    
+    2) Download
+    dynakube.yaml
+    
+    3) Run the script 
+    kubectl create namespace dynatrace
+    kubectl apply -f https://github.com/Dynatrace/dynatrace-operator/releases/download/v0.4.2/kubernetes.yaml
+    kubectl -n dynatrace wait pod --for=condition=ready -l internal.dynatrace.com/app=webhook --timeout=300s
+    kubectl apply -f dynakube.yaml
 
 
 ## Kubernetes Monitoring for K3S
