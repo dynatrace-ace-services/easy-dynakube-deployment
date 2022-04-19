@@ -10,6 +10,7 @@ Rollout the easytravel application on bare metal VM (VM on a cloud provider) wit
 
     #easytravel
     kubectl create -f https://raw.githubusercontent.com/dynatrace-ace-services/easy-dynakube-deployment/main/manifest-easytravel/easytravel.yaml
+    ls
 
 ## Install Gateway Istio 
 Install istio (if you use the shell in the box as putty access on tcp 443, you will lost your access and need to have a direct access with putty on tcp 22)
