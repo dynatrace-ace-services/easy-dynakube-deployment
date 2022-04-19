@@ -53,7 +53,7 @@ Install istio (if you use the shell in the box as putty access on tcp 443, you w
     kubectl apply -f https://raw.githubusercontent.com/dynatrace-ace-services/easy-dynakube-deployment/main/manifest-easytravel/istio-easytravel.yaml
    
     kubectl get ns
-    echo "at the end of this step, shell-in-the-box with port 443 will be stopped by istio - acces with putty on tcp port 22 is possible"
+    #at the end of this step, shell-in-the-box with port 443 will be stopped by istio - acces with putty on tcp port 22 is possible
     
 ## Kubernetes integration configuration
 From `Kubernetes > <k8s> > Settings (in Actions menu)`. 
