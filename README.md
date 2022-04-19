@@ -47,14 +47,14 @@ Install istio (if you use the shell in the box as putty access on tcp 443, you w
     kubectl label namespace default istio-injection=enabled
 
     #waiting for easytravel_www pod report READY before installing istio gateway > 3 minutes
-    #putty ONLY (shell-in-the-box with port 443 will be shutdown at the end of this step)  
     while [[ `kubectl get pods -n easytravel | grep easytravel-www | grep "0/"` ]];do kubectl get pods -n easytravel;echo "==> waiting for easytravel_www pod ready";sleep 1; done
     #putty ONLY (shell-in-the-box with port 443 will be shutdown at the end of this step)  
     kubectl apply -f https://raw.githubusercontent.com/dynatrace-ace-services/easy-dynakube-deployment/main/manifest-easytravel/istio-easytravel.yaml
     kubectl get ns
-
+    echo "at the end of this step, shell-in-the-box with port 443 will be stopped by istio - acces with putty on tcp port 22 is possible"
+    
 ## Kubernetes integration configuration
-From `Settings > Cloud and virtualization > Kubernetes`. 
+From `Kubernetes > <k8s> > Settings (in Actions menu)`. 
 
     Monitor event : `enable`  
     Opt in to the Kubernetes events feature for analysis and alerting : `enable`  
@@ -136,10 +136,14 @@ Stop loadgen :
 
     kubectl -n easytravel scale --replicas=0 deployment/loadgen
 
-## Restart Services 
+Restart Services 
 
     kubectl delete --all pods -n easytravel
     kubectl delete --all pods -n istio-system
+
+Uninstall Istio
+
+    istioctl x uninstall --purge
 
 Restart k3s server:
 
