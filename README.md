@@ -18,6 +18,7 @@ Generate DynaKube script installation
     
     1) Configuration
     Name (required)
+    Host Group (required)
     Token (required)
     Skip SSL certificat check 
     
