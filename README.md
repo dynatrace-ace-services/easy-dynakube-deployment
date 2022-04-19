@@ -105,6 +105,10 @@ Look at the KSM manifest section **Deployment** with the dynatrace metric scrapi
 
 
 ## Usefull command
+Generate Bearer for Dynakube Integration
+
+    kubectl get secret $(kubectl get sa dynatrace-kubernetes-monitoring -o jsonpath='{.secrets[0].name}' -n dynatrace) -o jsonpath='{.data.token}' -n dynatrace | base64 --decode;echo
+
 Verify istio:
 
     istioctl analyze
