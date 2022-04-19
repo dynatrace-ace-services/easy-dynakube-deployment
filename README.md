@@ -51,6 +51,7 @@ Install istio (if you use the shell in the box as putty access on tcp 443, you w
     while [[ `kubectl get pods -n easytravel | grep easytravel-www | grep "0/"` ]];do kubectl get pods -n easytravel;echo "==> waiting for easytravel_www pod ready";sleep 1; done
     #putty ONLY (shell-in-the-box with port 443 will be shutdown at the end of this step)  
     kubectl apply -f https://raw.githubusercontent.com/dynatrace-ace-services/easy-dynakube-deployment/main/manifest-easytravel/istio-easytravel.yaml
+   
     kubectl get ns
     echo "at the end of this step, shell-in-the-box with port 443 will be stopped by istio - acces with putty on tcp port 22 is possible"
     
