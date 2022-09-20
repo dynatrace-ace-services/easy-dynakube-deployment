@@ -2,7 +2,7 @@
 
 ## Install k3s rancher
 Rollout the easytravel application on bare metal VM (VM on a cloud provider) with k3s  
-(tested with Azure VM Standard B2s - 2 vCPU, 4 GB)  
+(tested with Azure VM B4ms - 4 vCPU, 8 GB)  
 
     #install k3s
     cd ~
