@@ -42,8 +42,8 @@ Generate DynaKube script installation
 Install istio (if you use the shell in the box as putty access on tcp 443, you will lost your access and need to have a direct access with putty on tcp 22)
 
     echo "export KUBECONFIG=/etc/rancher/k3s/k3s.yaml" >> .profile; source ~/.profile
-    curl -L https://istio.io/downloadIstio | ISTIO_VERSION=1.9.1 sh -
-    sudo mv istio-1.9.1/bin/istioctl /usr/local/bin/istioctl
+    curl -L https://istio.io/downloadIstio | ISTIO_VERSION=1.15 sh -
+    sudo mv istio-1.15/bin/istioctl /usr/local/bin/istioctl
     istioctl install -y
     kubectl label namespace default istio-injection=enabled
 
