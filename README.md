@@ -144,7 +144,7 @@ Stop loadgen :
 Restart Services 
 
     kubectl delete --all pods -n easytravel
-    kubectl delete --all pods -n system-istio
+    kubectl delete --all pods -n istio-system
 
 Uninstall Istio
 
