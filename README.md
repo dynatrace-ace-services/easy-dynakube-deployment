@@ -6,7 +6,7 @@ Rollout the easytravel application on bare metal VM (VM on a cloud provider) wit
 
     #install k3s
     cd ~
-    curl -sfL https://get.k3s.io | INSTALL_K3S_CHANNEL=v1.21 K3S_KUBECONFIG_MODE="644" INSTALL_K3S_EXEC="--disable=traefik" sh -s -
+    curl -sfL https://get.k3s.io | INSTALL_K3S_CHANNEL=v1.19 K3S_KUBECONFIG_MODE="644" INSTALL_K3S_EXEC="--disable=traefik" sh -s -
 
 ## Test your k3s installation  
     
@@ -42,8 +42,8 @@ Generate DynaKube script installation
 Install istio (if you use the shell in the box as putty access on tcp 443, you will lost your access and need to have a direct access with putty on tcp 22)
 
     echo "export KUBECONFIG=/etc/rancher/k3s/k3s.yaml" >> .profile; source ~/.profile
-    curl -L https://istio.io/downloadIstio | ISTIO_VERSION=1.15 sh -
-    sudo mv istio-1.15/bin/istioctl /usr/local/bin/istioctl
+    curl -L https://istio.io/downloadIstio | ISTIO_VERSION=1.9.1 sh -
+    sudo mv istio-1.9.1/bin/istioctl /usr/local/bin/istioctl
     istioctl install -y
     kubectl label namespace default istio-injection=enabled
 
