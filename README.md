@@ -4,8 +4,8 @@
 Rollout the easytravel application on bare metal VM (VM on a cloud provider) with k3s  
 (tested with Azure VM B4ms - 4 vCPU, 8 GB)  
 
-    #install k3s
-    cd ~
+    #install k3s;
+    cd ~;
     curl -sfL https://get.k3s.io | INSTALL_K3S_CHANNEL=v1.21 K3S_KUBECONFIG_MODE="644" INSTALL_K3S_EXEC="--disable=traefik" sh -s -
 
 ## Test your k3s installation  
