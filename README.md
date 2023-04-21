@@ -32,6 +32,7 @@ Generate DynaKube script installation
     kubectl apply -f dynakube.yaml
 
     kubectl get ns
+    kubectl -n dynatrace get pod -o wide
 
 ## Deploy Easytravel
     #easytravel
