@@ -120,7 +120,7 @@ Show all namesace
 Delete All pods (to restart the service)
 
     kubectl delete --all pods -n easytravel
-    kubectl delete --all pods -n system-istio
+    kubectl delete --all pods -n istio-system
     
 Get pod installed by DynaKube
 
