@@ -147,6 +147,10 @@ Restart Services
     kubectl delete --all pods -n easytravel
     kubectl delete --all pods -n istio-system
 
+Describe dynakube 
+
+    kubectl describe  dynakube -n dynatrace
+
 Uninstall Istio
 
     istioctl x uninstall --purge
