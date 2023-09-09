@@ -27,7 +27,7 @@ Generate DynaKube script installation
     
     3) Run the script 
     kubectl create namespace dynatrace
-    kubectl apply -f https://github.com/Dynatrace/dynatrace-operator/releases/download/v0.8.2/kubernetes.yaml
+    kubectl apply -f https://github.com/Dynatrace/dynatrace-operator/releases/latest/download/kubernetes.yaml
     kubectl -n dynatrace wait pod --for=condition=ready --selector=app.kubernetes.io/name=dynatrace-operator,app.kubernetes.io/component=webhook --timeout=300s
     kubectl apply -f dynakube.yaml
 
