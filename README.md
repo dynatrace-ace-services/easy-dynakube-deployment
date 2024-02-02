@@ -1,4 +1,4 @@
-# Monitor easytravel on kubernetes with DynaKube
+# Dynatrace Operator - EasyTravel monitored with Classic Full Stack 
 
 ## Install k3s rancher
 Rollout the easytravel application on bare metal VM (VM on a cloud provider) with k3s  
@@ -68,7 +68,6 @@ From `Kubernetes > <k8s> > Settings (in Actions menu)`.
 
 ## Monitor Istio
    
-   (Under construction - only heathz/ready with Opentracing)  
    enable Envoy on the monitorid technology : Settings > Monitoring > Monitored Technologies > Envoy
 
 
